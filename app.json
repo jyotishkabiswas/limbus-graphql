@@ -5,16 +5,6 @@
   "keywords": ["database", "api", "graphql", "heroku", "postgres", "hasura"],
   "success_url": "/console",
   "website": "https://hasura.io",
-  "repository": "https://github.com/hasura/graphql-engine-heroku",
-  "formation": {
-    "web": {
-      "quantity": 1
-    }
-  },
-  "stack": "container",
-  "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev"
-    }
-  ]
+  "repository": "https://github.com/jyotishkabiswas/limbus-graphql",
+  "stack": "container"
 }
