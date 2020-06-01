@@ -14,6 +14,7 @@
             _eq: X-Hasura-User-Id
       columns:
       - deleted
+      - id
       - link_enabled
       - snapshot
       - title
@@ -72,6 +73,7 @@
       columns:
       - deleted
       - email
+      - id
       - name
       - picture_url
       backend_only: false
@@ -125,6 +127,8 @@
       set:
         owner_id: x-hasura-User-Id
       columns:
+      - deleted
+      - id
       - name
       backend_only: false
   select_permissions:
