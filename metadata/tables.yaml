@@ -2,154 +2,154 @@
     schema: public
     name: pages
   object_relationships:
-  - name: workspace
-    using:
-      foreign_key_constraint_on: workspace_id
+    - name: workspace
+      using:
+        foreign_key_constraint_on: workspace_id
   insert_permissions:
-  - role: user
-    permission:
-      check:
-        workspace:
-          owner_id:
-            _eq: X-Hasura-User-Id
-      columns:
-      - deleted
-      - id
-      - link_enabled
-      - snapshot
-      - title
-      - workspace_id
-      backend_only: false
-  select_permissions:
-  - role: user
-    permission:
-      columns:
-      - id
-      - snapshot
-      - title
-      filter:
-        _or:
-        - workspace:
+    - role: user
+      permission:
+        check:
+          workspace:
             owner_id:
               _eq: X-Hasura-User-Id
-        - link_enabled:
-            _eq: true
+        columns:
+          - deleted
+          - id
+          - link_enabled
+          - snapshot
+          - title
+          - workspace_id
+        backend_only: false
+  select_permissions:
+    - role: user
+      permission:
+        columns:
+          - id
+          - snapshot
+          - title
+        filter:
+          _or:
+            - workspace:
+                owner_id:
+                  _eq: X-Hasura-User-Id
+            - link_enabled:
+                _eq: true
   update_permissions:
-  - role: user
-    permission:
-      columns:
-      - deleted
-      - link_enabled
-      - snapshot
-      - title
-      - workspace_id
-      filter:
-        workspace:
-          owner_id:
-            _eq: X-Hasura-User-Id
-      check: null
+    - role: user
+      permission:
+        columns:
+          - deleted
+          - link_enabled
+          - snapshot
+          - title
+          - workspace_id
+        filter:
+          workspace:
+            owner_id:
+              _eq: X-Hasura-User-Id
+        check: null
 - table:
     schema: public
     name: users
   array_relationships:
-  - name: workspaces
-    using:
-      foreign_key_constraint_on:
-        column: owner_id
-        table:
-          schema: public
-          name: workspaces
+    - name: workspaces
+      using:
+        foreign_key_constraint_on:
+          column: owner_id
+          table:
+            schema: public
+            name: workspaces
   insert_permissions:
-  - role: user
-    permission:
-      check:
-        id:
-          _eq: X-Hasura-User-Id
-      set:
-        email: x-hasura-Email
-        name: x-hasura-User-Name
-        id: x-hasura-User-Id
-        picture_url: x-hasura-Picture-Url
-      columns:
-      - deleted
-      - email
-      - id
-      - name
-      - picture_url
-      backend_only: false
+    - role: user
+      permission:
+        check:
+          id:
+            _eq: X-Hasura-User-Id
+        set:
+          email: x-hasura-user-email
+          name: x-hasura-user-name
+          id: x-hasura-user-id
+          picture_url: x-hasura-user-picture
+        columns:
+          - deleted
+          - email
+          - id
+          - name
+          - picture_url
+        backend_only: false
   select_permissions:
-  - role: user
-    permission:
-      columns:
-      - deleted
-      - email
-      - id
-      - name
-      - picture_url
-      - created_at
-      - updated_at
-      filter:
-        id:
-          _eq: X-Hasura-User-Id
+    - role: user
+      permission:
+        columns:
+          - deleted
+          - email
+          - id
+          - name
+          - picture_url
+          - created_at
+          - updated_at
+        filter:
+          id:
+            _eq: X-Hasura-User-Id
   update_permissions:
-  - role: user
-    permission:
-      columns:
-      - deleted
-      - email
-      - name
-      - picture_url
-      filter:
-        id:
-          _eq: X-Hasura-User-Id
-      check: null
+    - role: user
+      permission:
+        columns:
+          - deleted
+          - email
+          - name
+          - picture_url
+        filter:
+          id:
+            _eq: X-Hasura-User-Id
+        check: null
 - table:
     schema: public
     name: workspaces
   object_relationships:
-  - name: owner
-    using:
-      foreign_key_constraint_on: owner_id
+    - name: owner
+      using:
+        foreign_key_constraint_on: owner_id
   array_relationships:
-  - name: pages
-    using:
-      foreign_key_constraint_on:
-        column: workspace_id
-        table:
-          schema: public
-          name: pages
+    - name: pages
+      using:
+        foreign_key_constraint_on:
+          column: workspace_id
+          table:
+            schema: public
+            name: pages
   insert_permissions:
-  - role: user
-    permission:
-      check:
-        owner_id:
-          _eq: X-Hasura-User-Id
-      set:
-        owner_id: x-hasura-User-Id
-      columns:
-      - deleted
-      - id
-      - name
-      backend_only: false
+    - role: user
+      permission:
+        check:
+          owner_id:
+            _eq: X-Hasura-User-Id
+        set:
+          owner_id: x-hasura-User-Id
+        columns:
+          - deleted
+          - id
+          - name
+        backend_only: false
   select_permissions:
-  - role: user
-    permission:
-      columns:
-      - deleted
-      - name
-      - owner_id
-      - created_at
-      - updated_at
-      - id
-      filter:
-        owner_id:
-          _eq: X-Hasura-User-Id
+    - role: user
+      permission:
+        columns:
+          - deleted
+          - name
+          - owner_id
+          - created_at
+          - updated_at
+          - id
+        filter:
+          owner_id:
+            _eq: X-Hasura-User-Id
   update_permissions:
-  - role: user
-    permission:
-      columns:
-      - name
-      filter:
-        owner_id:
-          _eq: X-Hasura-User-Id
-      check: null
+    - role: user
+      permission:
+        columns:
+          - name
+        filter:
+          owner_id:
+            _eq: X-Hasura-User-Id
+        check: null
