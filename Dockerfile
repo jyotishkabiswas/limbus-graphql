@@ -1,5 +1,10 @@
 FROM hasura/graphql-engine:v1.2.2.cli-migrations-v2
 
+ENV HASURA_GRAPHQL_CLI_ENVIRONMENT=default
+
+COPY ./migrations /migrations
+COPY ./metadata /metadata
+
 # Enable the console
 ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
 ENV HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS=true
