@@ -2,7 +2,6 @@ FROM hasura/graphql-engine:v1.2.2.cli-migrations-v2
 
 # Enable the console
 ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
-ENV HASURA_GRAPHQL_DATABASE_URL=$DATABASE_URL
 # # Enable debugging mode. It should be disabled in production.
 # ENV HASURA_GRAPHQL_DEV_MODE=false
 
