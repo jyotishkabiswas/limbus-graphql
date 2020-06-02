@@ -25,8 +25,13 @@
       permission:
         columns:
           - id
-          - snapshot
           - title
+          - workspace_id
+          - snapshot
+          - link_enabled
+          - updated_at
+          - created_at
+          - deleted
         filter:
           _or:
             - workspace:
@@ -149,6 +154,7 @@
       permission:
         columns:
           - name
+          - deleted
         filter:
           owner_id:
             _eq: X-Hasura-User-Id
