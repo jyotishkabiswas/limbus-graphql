@@ -1,4 +1,4 @@
-FROM hasura/graphql-engine:v1.2.2.cli-migrations-v2
+FROM hasura/graphql-engine:v1.3.0.cli-migrations-v2
 
 ENV HASURA_GRAPHQL_CLI_ENVIRONMENT=default
 
@@ -10,6 +10,7 @@ ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
 ENV HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS=true
 ENV HASURA_GRAPHQL_METADATA_DIR=/metadata
 ENV HASURA_GRAPHQL_MIGRATIONS_DIR=/migrations
+ENV HASURA_GRAPHQL_UNAUTHORIZED_ROLE=anonymous
 
 # # Enable debugging mode. It should be disabled in production.
 # ENV HASURA_GRAPHQL_DEV_MODE=false

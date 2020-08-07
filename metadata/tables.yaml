@@ -21,6 +21,21 @@
       - workspace_id
       backend_only: false
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      - title
+      - workspace_id
+      - snapshot
+      - link_enabled
+      - updated_at
+      - created_at
+      - deleted
+      filter:
+        link_enabled:
+          _eq: true
+      limit: 1
   - role: user
     permission:
       columns:
